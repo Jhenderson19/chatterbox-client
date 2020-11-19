@@ -21,6 +21,10 @@ var App = {
     Parse.readAll((data) => {
       // examine the response from the server request:
       console.log(data);
+      // store data in an array
+      Messages.breakup(data);
+      // call a function that renders data to the screen (messageview.render)
+      // call messageview.render and pass in data
 
       callback();
     });
