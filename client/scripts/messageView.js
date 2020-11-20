@@ -1,3 +1,5 @@
+//This File describes how an individual message should be displayed on the screen.
+
 var MessageView = {
 
   render: _.template(`

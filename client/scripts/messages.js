@@ -1,3 +1,5 @@
+// This File is the model for messages
+
 var Messages = {
   allmessages: [],
 
@@ -12,6 +14,20 @@ var Messages = {
 
   verify: function(message) {
     return message.username && message.text ? true : false;
+  },
+
+  post: function(text) {
+    console.log('Messages.js ' + text);
+    var messageToSend = new Message(App.username, text);
+    Parse.create(messageToSend);
   }
 
 };
+
+class Message {
+  constructor(username, text, roomName) {
+    this.username = username;
+    this.text = text;
+    this.roomName = roomName;
+  }
+}

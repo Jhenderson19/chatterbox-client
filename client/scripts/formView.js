@@ -1,3 +1,5 @@
+// This file is our view and controller for sending chats
+
 var FormView = {
 
   $form: $('form'),
@@ -9,7 +11,7 @@ var FormView = {
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
     event.preventDefault();
-    
+    Messages.post( $('#message').val());
     console.log('click!');
   },
 

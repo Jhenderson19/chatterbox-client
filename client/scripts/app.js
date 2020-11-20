@@ -1,3 +1,5 @@
+// This file is the Model for chat management
+
 var App = {
 
   $spinner: $('.spinner img'),
@@ -14,6 +16,7 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
+    App.liveUpdate();
 
   },
 
@@ -21,12 +24,13 @@ var App = {
     Parse.readAll((data) => {
       // examine the response from the server request:
       console.log(data);
+
+
       // store data in an array
       Messages.breakup(data);
-      // call a function that renders data to the screen (messageview.render)
-      // call messageview.render and pass in data
 
       callback();
+      return data;
     });
   },
 
@@ -38,5 +42,11 @@ var App = {
   stopSpinner: function() {
     App.$spinner.fadeOut('fast');
     FormView.setStatus(false);
+  },
+
+  liveUpdate: function(previousMessages) {
+    App.fetch();
+    setTimeout(App.liveUpdate, 25);
   }
+
 };
