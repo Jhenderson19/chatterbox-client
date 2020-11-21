@@ -16,14 +16,14 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
-    App.liveUpdate();
+    setInterval(App.liveUpdate, 1000);
 
   },
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      console.log(data);
+      // console.log(data);
 
 
       // store data in an array
@@ -44,9 +44,8 @@ var App = {
     FormView.setStatus(false);
   },
 
-  liveUpdate: function(previousMessages) {
+  liveUpdate: function() {
     App.fetch();
-    setTimeout(App.liveUpdate, 25);
   }
 
 };

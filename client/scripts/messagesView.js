@@ -10,8 +10,12 @@ var MessagesView = {
   render: function() {
     MessagesView.$chats.empty();
     for (let i = 0; i < Messages.allmessages.length; i++) {
-      MessagesView.$chats.append(MessageView.render(Messages.allmessages[i]));
+      MessagesView.renderMessage(Messages.allmessages[i]);
     }
+  },
+
+  renderMessage: function(message) {
+    MessagesView.$chats.append(MessageView.render(message));
   }
 
 };
