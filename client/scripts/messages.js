@@ -11,11 +11,8 @@ var Messages = {
           Rooms.add(data.results[i].roomname);
         }
         var cleanRoom = Rooms.scrubbing(data.results[i].roomname);
-        console.log(cleanRoom + ' compared to ' + RoomsView.$select.val());
         if (cleanRoom === RoomsView.$select.val()) {
           Messages.allmessages.push(data.results[i]);
-        } else {
-          console.log('failed compare, not posting');
         }
       }
     }

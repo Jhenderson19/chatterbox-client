@@ -11,11 +11,17 @@ var MessagesView = {
     MessagesView.$chats.empty();
     for (let i = 0; i < Messages.allmessages.length; i++) {
       MessagesView.renderMessage(Messages.allmessages[i]);
+
     }
+    Friends.addClasses();
   },
 
   renderMessage: function(message) {
-    MessagesView.$chats.append(MessageView.render(message));
+    var $chat = $(MessageView.render(message));
+    $chat.children('.username').on('click', function() {
+      Friends.toggleStatus($chat.children('.username').text());
+    });
+    MessagesView.$chats.append($chat);
   }
 
 };
